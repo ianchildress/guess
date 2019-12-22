@@ -27,6 +27,7 @@ func (m menu) run() {
 		os.Exit(1)
 	}
 	m.player = m.scanner.Text()
+	fmt.Printf("\n\n")
 	fmt.Println("Hello", m.player, "let's play a game!")
 	fmt.Println("I will think of an animal and you will try to guess what it is.")
 	fmt.Printf("The possible answers are: ")
@@ -39,7 +40,8 @@ func (m menu) run() {
 
 func (m menu) top() {
 	for {
-		fmt.Println("Would what you like to do?")
+		fmt.Printf("\n\n")
+		fmt.Println("What would you like to do?")
 		fmt.Println("1) Ask a question about the animal")
 		fmt.Println("2) Guess the animal")
 		fmt.Println("3) Quit the program")
@@ -67,6 +69,7 @@ func (m menu) top() {
 
 func (m menu) question() {
 	for {
+		fmt.Printf("\n\n")
 		fmt.Println("What would you like to ask?")
 		fmt.Println("1) Does the animal have scales?")
 		fmt.Println("2) Does the animal have a tail?")
@@ -91,6 +94,7 @@ func (m menu) question() {
 			fmt.Println(m.answer.livesInWater())
 			return
 		default:
+			fmt.Printf("\n\n")
 			fmt.Println("I'm sorry, I didn't understand that answer. " +
 				"Please enter a number that corresponds with your question.")
 		}
@@ -98,6 +102,7 @@ func (m menu) question() {
 }
 func (m menu) guess() {
 	for {
+		fmt.Printf("\n\n")
 		fmt.Println("What animal am I thinking of?")
 		for i := range m.answer.all {
 			fmt.Printf("%v) %s\n", i+1, m.answer.all[i].name)
@@ -114,9 +119,11 @@ func (m menu) guess() {
 		}
 
 		if m.answer.all[i-1].name == m.answer.chosen.name {
+			fmt.Printf("\n\n")
 			fmt.Printf("That's right %s! I was thinking of %s\n", m.player, m.answer.chosen.name)
 			return
 		}
+		fmt.Printf("\n\n")
 		fmt.Printf("Sorry %s, that wasn't the animal I was thinking of.\n", m.player)
 		return
 	}
